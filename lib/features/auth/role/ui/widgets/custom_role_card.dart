@@ -10,49 +10,60 @@ class CustomRoleCard extends StatelessWidget {
     required this.title,
     required this.description,
     required this.image,
+    required this.cardNo,
+    this.onTap,
+    this.selected = false,
   });
+
   final String title;
   final String description;
   final String image;
+  final int cardNo;
+  final Function()? onTap;
+  final bool selected;
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: 150.h,
-      decoration: const BoxDecoration(
-        color: AppColors.greyColor,
-        borderRadius: BorderRadius.all(
-          Radius.circular(16),
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: double.infinity,
+        height: 150.h,
+        decoration: BoxDecoration(
+          color: selected ? Colors.blueGrey.shade700 : AppColors.greyColor,
+          borderRadius: const BorderRadius.all(
+            Radius.circular(16),
+          ),
         ),
-      ),
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
-        child: Row(
-          children: [
-            Expanded(
-              flex: 2,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title,
-                    style: AppStyles.titleText,
-                  ),
-                  Gap(10.h),
-                  Text(
-                    description,
-                    style: AppStyles.descriptionText,
-                  )
-                ],
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 20.h),
+          child: Row(
+            children: [
+              Expanded(
+                flex: 2,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: AppStyles.titleText,
+                    ),
+                    Gap(10.h),
+                    Text(
+                      description,
+                      style: AppStyles.descriptionText,
+                    )
+                  ],
+                ),
               ),
-            ),
-            Expanded(
-              flex: 1,
-              child: Image.asset(
-                image,
-              ),
-            )
-          ],
+              Expanded(
+                flex: 1,
+                child: Image.asset(
+                  image,
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

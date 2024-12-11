@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tech_repair_app/core/assets/images/app_images.dart';
+import 'package:tech_repair_app/core/routing/route_names.dart';
 import 'package:tech_repair_app/core/widgets/custom_elevated_button.dart';
 
 class WelcomeScreenBody extends StatelessWidget {
@@ -23,7 +25,9 @@ class WelcomeScreenBody extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: CustomElevatedButton(
             label: 'Start',
-            onPressed: () {},
+            onPressed: () {
+              context.pushNamed(RouteNames.role);
+            },
           ).animate().fade().scale(
                 delay: const Duration(milliseconds: 500),
                 duration: const Duration(milliseconds: 500),

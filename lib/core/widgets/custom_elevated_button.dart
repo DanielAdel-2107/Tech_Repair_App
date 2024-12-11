@@ -8,15 +8,17 @@ class CustomElevatedButton extends StatelessWidget {
     super.key,
     required this.label,
     this.onPressed,
+    this.color = AppColors.blueColor,
   });
   final String label;
   final Function()? onPressed;
+  final Color color;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
           fixedSize: Size(double.infinity, 60.h),
-          backgroundColor: AppColors.blueColor,
+          backgroundColor: color,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
           )),
@@ -24,7 +26,7 @@ class CustomElevatedButton extends StatelessWidget {
       child: Center(
         child: Text(
           label,
-          style: AppStyles.buttonText,
+          style: AppStyles.elevatedbuttonText,
         ),
       ),
     );
